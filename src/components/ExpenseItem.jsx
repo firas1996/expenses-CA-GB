@@ -3,7 +3,7 @@ import "./ExpenseItem.css";
 
 const ExpenseItem = ({ title, price, date }) => {
   // const { title, price, date } = props;
-  const month = date.toLocaleString("ar-SA", { month: "long" });
+  const month = date.toLocaleString("fr-FR", { month: "long" });
   const day = date.toLocaleString("ar-TN", { day: "2-digit" });
   const year = date.getFullYear();
   const [newTitle, setNewTitle] = useState(title);
