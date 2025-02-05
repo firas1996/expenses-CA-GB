@@ -21,7 +21,7 @@ const Chart = ({ data }) => {
     chartData[data[i].date.getMonth()].value += data[i].price;
   }
   console.log(chartData);
-  const max = Math.max(...chartData.map((item) => item.value));
+  const max = Math.max(...chartData.map((item) => item.value)); //(item) => { return item.value}
   console.log(max);
   return (
     <div className="chart">
