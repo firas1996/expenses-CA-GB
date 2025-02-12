@@ -7,15 +7,15 @@ const AddExpenseForm = () => {
         <div className="new-expense__controls">
           <div className="new-expense__control">
             <label>Title</label>
-            <input />
+            <input placeholder="Title" />
           </div>
           <div className="new-expense__control">
             <label>Price</label>
-            <input />
+            <input placeholder="Price" type="number" min="0" step="0.01" />
           </div>
           <div className="new-expense__control">
             <label>Date</label>
-            <input />
+            <input type="date" />
           </div>
         </div>
         <div className="new-expense__actions">
