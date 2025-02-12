@@ -1,6 +1,9 @@
 import "./AddExpenseForm.css";
 
 const AddExpenseForm = () => {
+  const myDate = new Date(Date.now()).getFullYear();
+  const minDate = `${myDate - 2}-01-01`;
+  const maxDate = `${myDate - 2}-12-31`;
   return (
     <div className="new-expense">
       <form>
@@ -15,7 +18,7 @@ const AddExpenseForm = () => {
           </div>
           <div className="new-expense__control">
             <label>Date</label>
-            <input type="date" />
+            <input type="date" min={minDate} max={maxDate} />
           </div>
         </div>
         <div className="new-expense__actions">
