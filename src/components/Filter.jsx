@@ -4,7 +4,12 @@ const Filter = ({ years, selectedYear, setSelectedYear }) => {
   return (
     <div className="expenses-filter">
       <label>Filter By Year:</label>
-      <select onChange={() => {}}>
+      <select
+        onChange={(event) => {
+          setSelectedYear(event.target.value);
+        }}
+        value={selectedYear}
+      >
         {years.map((item) => {
           return <option value={item}>{item}</option>;
         })}
