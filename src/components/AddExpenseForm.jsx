@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./AddExpenseForm.css";
 
-const AddExpenseForm = () => {
+const AddExpenseForm = ({ getData }) => {
   const [inputs, setInputs] = useState({
     title: "",
     price: "",
@@ -18,7 +18,12 @@ const AddExpenseForm = () => {
   const maxDate = `${myDate + 2}-12-31`;
   const submitForm = (e) => {
     e.preventDefault();
-    console.log(inputs);
+    getData({
+      id: Math.random(),
+      title: inputs.title,
+      price: +inputs.price,
+      date: new Date(inputs.date),
+    });
     setInputs({
       title: "",
       price: "",
@@ -32,6 +37,7 @@ const AddExpenseForm = () => {
           <div className="new-expense__control">
             <label>Title</label>
             <input
+              required
               onChange={inputsHandler}
               value={inputs.title}
               name="title"
@@ -41,6 +47,7 @@ const AddExpenseForm = () => {
           <div className="new-expense__control">
             <label>Price</label>
             <input
+              required
               onChange={inputsHandler}
               value={inputs.price}
               name="price"
@@ -53,6 +60,7 @@ const AddExpenseForm = () => {
           <div className="new-expense__control">
             <label>Date</label>
             <input
+              required
               onChange={inputsHandler}
               value={inputs.date}
               name="date"

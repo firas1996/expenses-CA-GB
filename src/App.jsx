@@ -1,9 +1,10 @@
+import { useState } from "react";
 import AddExpenseForm from "./components/AddExpenseForm";
 import ExpenseItem from "./components/ExpenseItem";
 import ExpensesContainer from "./components/ExpensesContainer";
 
 function App() {
-  const data = [
+  const oldData = [
     {
       id: 1,
       title: "Item 1",
@@ -35,9 +36,13 @@ function App() {
       date: new Date(2025, 10, 15),
     },
   ];
+  const [data, setData] = useState(oldData);
+  const getData = (newItem) => {
+    setData([newItem, ...data]);
+  };
   return (
     <div>
-      <AddExpenseForm />
+      <AddExpenseForm getData={getData} />
       <ExpensesContainer data={data} />
     </div>
   );

@@ -6,12 +6,12 @@ const ExpenseItem = ({ title, price, date }) => {
   const month = date.toLocaleString("fr-FR", { month: "long" });
   const day = date.toLocaleString("ar-TN", { day: "2-digit" });
   const year = date.getFullYear();
-  const [newTitle, setNewTitle] = useState(title);
-  const changeTitleHandler = () => {
-    console.log(newTitle);
-    setNewTitle("ABC !");
-    console.log(newTitle);
-  };
+  // const [newTitle, setNewTitle] = useState(title);
+  // const changeTitleHandler = () => {
+  //   console.log(newTitle);
+  //   setNewTitle("ABC !");
+  //   console.log(newTitle);
+  // };
   return (
     <div className="expense-item">
       <div className="expense-date">
@@ -20,9 +20,9 @@ const ExpenseItem = ({ title, price, date }) => {
         <div className="expense-date__day">{day}</div>
       </div>
       <div className="expense-item__description">
-        <h2>{newTitle}</h2>
-        <button onClick={changeTitleHandler}>Update Title !!</button>
-        <div className="expense-item__price">{price}</div>
+        <h2>{title}</h2>
+        {/* <button onClick={changeTitleHandler}>Update Title !!</button> */}
+        <div className="expense-item__price">$ {price}</div>
       </div>
     </div>
   );
