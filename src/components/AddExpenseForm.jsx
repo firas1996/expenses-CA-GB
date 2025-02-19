@@ -31,12 +31,18 @@ const AddExpenseForm = () => {
         <div className="new-expense__controls">
           <div className="new-expense__control">
             <label>Title</label>
-            <input onChange={inputsHandler} name="title" placeholder="Title" />
+            <input
+              onChange={inputsHandler}
+              value={inputs.title}
+              name="title"
+              placeholder="Title"
+            />
           </div>
           <div className="new-expense__control">
             <label>Price</label>
             <input
               onChange={inputsHandler}
+              value={inputs.price}
               name="price"
               placeholder="Price"
               type="number"
@@ -48,6 +54,7 @@ const AddExpenseForm = () => {
             <label>Date</label>
             <input
               onChange={inputsHandler}
+              value={inputs.date}
               name="date"
               type="date"
               min={minDate}
