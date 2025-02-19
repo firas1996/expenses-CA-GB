@@ -26,7 +26,14 @@ const Chart = ({ data }) => {
   return (
     <div className="chart">
       {chartData.map((item) => {
-        return <ChartBar label={item.label} value={item.value} max={max} />;
+        return (
+          <ChartBar
+            key={item.label}
+            label={item.label}
+            value={item.value}
+            max={max}
+          />
+        );
       })}
     </div>
   );

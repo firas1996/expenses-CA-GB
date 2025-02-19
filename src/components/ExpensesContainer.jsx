@@ -13,7 +13,6 @@ const ExpensesContainer = ({ data }) => {
   const newList = data.filter((item) =>
     selectedYear === "All" ? true : selectedYear == item.date.getFullYear()
   );
-  console.log(newList);
   return (
     <div className="expenses">
       <Filter
@@ -24,7 +23,12 @@ const ExpensesContainer = ({ data }) => {
       <Chart data={newList} />
       {newList.map((item) => {
         return (
-          <ExpenseItem title={item.title} date={item.date} price={item.price} />
+          <ExpenseItem
+            key={item.id}
+            title={item.title}
+            date={item.date}
+            price={item.price}
+          />
         );
       })}
     </div>

@@ -2,11 +2,15 @@ import { useState } from "react";
 import "./AddExpenseForm.css";
 
 const AddExpenseForm = ({ getData }) => {
+  const [affiche, setAffiche] = useState(false);
   const [inputs, setInputs] = useState({
     title: "",
     price: "",
     date: "",
   });
+  const afficheForm = () => {
+    setAffiche(!affiche);
+  };
   const inputsHandler = ({ target }) => {
     const { name, value } = target;
     setInputs((prevState) => {
@@ -32,49 +36,55 @@ const AddExpenseForm = ({ getData }) => {
   };
   return (
     <div className="new-expense">
-      <form onSubmit={submitForm}>
-        <div className="new-expense__controls">
-          <div className="new-expense__control">
-            <label>Title</label>
-            <input
-              required
-              onChange={inputsHandler}
-              value={inputs.title}
-              name="title"
-              placeholder="Title"
-            />
+      {affiche ? (
+        <form onSubmit={submitForm}>
+          <div className="new-expense__controls">
+            <div className="new-expense__control">
+              <label>Title</label>
+              <input
+                required
+                onChange={inputsHandler}
+                value={inputs.title}
+                name="title"
+                placeholder="Title"
+              />
+            </div>
+            <div className="new-expense__control">
+              <label>Price</label>
+              <input
+                required
+                onChange={inputsHandler}
+                value={inputs.price}
+                name="price"
+                placeholder="Price"
+                type="number"
+                min="0"
+                step="0.01"
+              />
+            </div>
+            <div className="new-expense__control">
+              <label>Date</label>
+              <input
+                required
+                onChange={inputsHandler}
+                value={inputs.date}
+                name="date"
+                type="date"
+                min={minDate}
+                max={maxDate}
+              />
+            </div>
           </div>
-          <div className="new-expense__control">
-            <label>Price</label>
-            <input
-              required
-              onChange={inputsHandler}
-              value={inputs.price}
-              name="price"
-              placeholder="Price"
-              type="number"
-              min="0"
-              step="0.01"
-            />
+          <div className="new-expense__actions">
+            <button type="button" onClick={afficheForm}>
+              Cancel
+            </button>
+            <button type="submit">Add Expense</button>
           </div>
-          <div className="new-expense__control">
-            <label>Date</label>
-            <input
-              required
-              onChange={inputsHandler}
-              value={inputs.date}
-              name="date"
-              type="date"
-              min={minDate}
-              max={maxDate}
-            />
-          </div>
-        </div>
-        <div className="new-expense__actions">
-          <button>Cancel</button>
-          <button type="submit">Add Expense</button>
-        </div>
-      </form>
+        </form>
+      ) : (
+        <button onClick={afficheForm}>Add New Expense</button>
+      )}
     </div>
   );
 };
